@@ -77,9 +77,9 @@ INSERT INTO xz_login VALUES(null,'tom',md5('123'));
 SELECT uname,upwd FROM xz_login WHERE uname=? AND upwd=md5(?)
 
 CREATE TABLE xz_cart(
-  id    INT PRIMARY KEY AUTO_INCREMENT,
+  uid    INT PRIMARY KEY AUTO_INCREMENT,
   count INT,
   price DECIMAL(15,2),
   pid   INT,
-  uid   INT
+  id   INT
 );

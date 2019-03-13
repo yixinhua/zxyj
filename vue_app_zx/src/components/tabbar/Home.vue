@@ -58,7 +58,7 @@
             <div class="floor-container">
                 <div class="container-box"><img src="../../img/middle3.png" ></div>
                 <div class="floor-content" >
-                    <ul class="floor-list" @slideleft="handleLeft" @swipe>
+                    <ul class="floor-list" >
                         <li class="floor-item" v-for="item in rows" :key="item.id">
                             <img :src="item.img_url">
                             <div class="pro-title">{{item.title}}</div>
@@ -80,7 +80,7 @@
             </div>
             <div class="found-list" v-for="item in prolist" :key="item.id">
                 <div class="found-item" >
-                    <img :src="item.img_url">
+                    <img :src="item.img_url" @click="jumpinfo" :data-id="item.id">
                     <div class="found-detail">
                         <span class="found-title">{{item.title}}</span>
                         <p class="found-subtitle">{{item.subtitle}}</p>
@@ -131,9 +131,11 @@ export default {
                 this.prolist=result.data.data
             })
         },
-        handleLeft(){
-            console.log(123)
+        jumpinfo(e){
+            var id=e.target.dataset.id
+            this.$router.push("goodsinfo?id="+id)
         }
+       
     },
     created() {
         this.handleImage();

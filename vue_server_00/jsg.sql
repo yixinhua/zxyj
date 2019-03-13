@@ -38,3 +38,11 @@ INSERT INTO zx_prolist VALUES
 (null,"http://127.0.0.1:3000/img/home/found8.jpg","美旅 DX2拉杆箱","便捷拉杆箱",352.00,"时尚设计","轻享差旅"),
 (null,"http://127.0.0.1:3000/img/home/found9.jpg","记忆棉护腰靠垫","美国睡眠科学大美人专利",299.00,"缓解背部疲劳","撑腰护脊"),
 (null,"http://127.0.0.1:3000/img/home/found10.jpg","Beats Solo3 Wireless蓝牙耳机 ","电池使用长达40小时",1830.00,"出色音效","充电五分钟播放三小时");
+CREATE TABLE zx_cart(
+    uid INT PRIMARY KEY AUTO_INCREMENT,
+    img_url VARCHAR(255),
+    title VARCHAR(255),
+    price DECIMAL(10,2),
+    count INT,
+    id   INT
+);

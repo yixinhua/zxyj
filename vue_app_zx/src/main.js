@@ -4,6 +4,31 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import Vuex from 'vuex' 
+//注册Vuex组件
+Vue.use(Vuex)
+//创建store
+var store=new Vuex.Store({
+  state:{
+      cartCount:sessionStorage.getItem("cartCount")//共享数据，购物车中商品数量
+  },
+  mutations:{
+      increment(state){
+        state.cartCount++;
+      },
+      //显示购物车列表时
+      updateCount(state,count){
+        state.cartCount=count;
+        sessionStorage.setItem("cartCount",count);
+      },    
+  },
+  getters:{
+    //获取购物车中数量方法
+    optCartCount:function(state){
+      return state.cartCount;
+    }
+  }
+})
 //引入mint-ui组件库
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css'
@@ -31,6 +56,14 @@ Vue.prototype.qs=qs;
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
+})
+router.beforeEach((to, from, next) => {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  next()
 })

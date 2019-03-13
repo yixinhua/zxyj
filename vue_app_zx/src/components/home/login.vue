@@ -4,7 +4,7 @@
             <div class="head">
                 <img src="../../img/back.png">
                 <span>登录</span>
-                <a class="register">注册</a>
+                <router-link to="/register" class="register">注册</router-link>
             </div>
             <div class="inputbox">
                 <div class="uname">
